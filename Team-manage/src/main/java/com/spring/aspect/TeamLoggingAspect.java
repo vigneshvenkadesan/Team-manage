@@ -37,7 +37,7 @@ public class TeamLoggingAspect {
 	{
 		String method = theJoinPoint.getSignature().toString();
 		
-		System.out.println("\n =======> Before Execution "+method);
+		myLogger.info("\n =======> Before Execution "+method);
 	}
 	
 	@AfterReturning(pointcut="forFlow()",returning = "theresult")
@@ -45,8 +45,8 @@ public class TeamLoggingAspect {
 	{
 		String method = theJoinPoint.getSignature().toString();
 		
-		System.out.println("\n =======> After Running Execution "+method);
-		System.out.println("\n =======> After Running Execution "+ theresult);
+		myLogger.info("\n =======> After Running Execution "+method);
+		myLogger.info("\n =======> After Running Execution "+ theresult);
 	}
 
 }

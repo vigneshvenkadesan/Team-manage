@@ -92,4 +92,13 @@ public class AppController {
 		
 		return "redirect:/team/list";
 	}
+	
+	@GetMapping("/showTeamInfo")
+	public String TeamInfo()
+	{
+		
+	
+		
+		return "team-info";
+	}
 }

@@ -93,7 +93,7 @@ Session currentSession = sessionFactory.getCurrentSession();
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Query theQuery = currentSession.createQuery("delete from Player where id=: thePlayerId");
+		Query theQuery = currentSession.createQuery("delete from Player where id=:thePlayerId");
 		theQuery.setParameter("thePlayerId", theId);
 		theQuery.executeUpdate();
 	}

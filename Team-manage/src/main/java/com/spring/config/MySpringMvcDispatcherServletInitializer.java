@@ -21,5 +21,8 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 		// TODO Auto-generated method stub
 		return new String[] {"/"};
 	}
+	
+	
+	// this project is done using only java no xml
 
 }

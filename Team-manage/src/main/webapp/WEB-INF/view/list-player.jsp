@@ -1,4 +1,6 @@
+<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security"  uri="http://www.springframework.org/security/tags" %>
 
 
 <!DOCTYPE html>
@@ -26,10 +28,13 @@
 		</div>
 	</div>
 	
-	<br>
-	<input type="button" value="Add New Player " onclick="window.location.href='showForAdd'; return false" class="add-button" />
-		<input type="button" value="Sort by NofMatches" onclick="window.location.href='showSort'; return false" class="add-button" />
 	
+
+	<br>
+				<input type="button" value="View Team Info" onclick="window.location.href='showTeamInfo'; return false" class="add-button" />
+	
+	
+	 
 	<div id="container">
 	
 		<div id="content">
@@ -59,11 +64,11 @@
 				<c:url var="updateLink" value="/team/showFormForUpdate">
 				<c:param name="PlayerID" value="${tempPlayer.id}" />
 				</c:url>
-				
+				<security:authorize access="hasRole('MANAGER')">
 				<c:url var="deleteLink" value="/team/showFormForDelete">
 				<c:param name="PlayerID" value="${tempPlayer.id}" />
 				</c:url>
-				
+				</security:authorize>
 					<tr>
 						<td> ${tempPlayer.id} </td>
 						<td> ${tempPlayer.firstName} </td>
@@ -89,6 +94,21 @@
 	
 	</div>
 	
+	<hr>
+	<security:authorize access="hasRole('MANAGER')">
+			<input type="button" value="Add New Player " onclick="window.location.href='showForAdd'; return false" class="add-button" />
+	 </security:authorize>	
+	 
+	 <security:authorize access="hasAnyRole('MANAGER', 'CAPTAIN')">
+		<input type="button" value="Sort by No Of Matches" onclick="window.location.href='showSort'; return false" class="add-button" />
+	 </security:authorize>	
+	 <hr>
+	 <hr>
+<form:form action="${pageContext.request.contextPath}/logout" method="POST" >
+	
+	<input type="submit" value="Logout"/>
+	
+	</form:form>
 
 </body>
 
